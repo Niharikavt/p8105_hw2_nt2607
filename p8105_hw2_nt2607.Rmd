@@ -1,6 +1,7 @@
 ---
 title: "p8105_hw2_nt2607"
-output: html_document
+author: "Niharika Telrandhe"
+output: github_document 
 date: "2022-10-05"
 ---
 
