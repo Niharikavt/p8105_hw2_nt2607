@@ -21,4 +21,20 @@ col_types = cols(Route8 = "c", Route9 = "c", Route10 = "c", Route11 = "c")) %>%
   janitor::clean_names() %>% 
   select(line, starts_with('station'),starts_with('route'), entry, vending, entrance_type, ada, -station_location) %>% 
   mutate(entry = ifelse(entry == "YES", TRUE, FALSE))
+summary(nyctransit_df)
 ```
+## Short paragraph about the dataset
+
+This dataset contains the following variablea : `r names(nyctransit_df)`
+
+My data cleaning steps involved importing the dataset, cleaning of variable names, selecting particular variables and converting the entry variable from character to logical.
+
+The dimensions of the resulting dataset are `r dim(nyctransit_df)`
+
+
+
+
+
+
+
+
