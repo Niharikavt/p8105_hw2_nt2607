@@ -96,18 +96,31 @@ mr_trash_df = read_excel("./data/Trash Wheel Collection Data.xlsx", sheet = "Mr.
 
 ```
 
-**Read and clean the Prfessor Trash Wheel Sheet**
+**Read and clean the Professor Trash Wheel Sheet**
 
 ```{r}
-mr_trash_df = read_excel("./data/Trash Wheel Collection Data.xlsx", sheet = "Professor Trash Wheel", range = "A2:M96") %>%
+Proftrash_df = read_excel("./data/Trash Wheel Collection Data.xlsx", sheet = "Professor Trash Wheel", range = "A2:M96") %>%
   janitor::clean_names() %>% 
   drop_na(dumpster)
 
 ```
+**Combine MR.Trash and Prof Trash**
+
+```{r}
+mr_trash_df$dumpster = as.numeric(mr_trash_df$dumpster)
+mr_trash_df$year = as.numeric(mr_trash_df$year)
+```
+
+**Adding additional variables to both**
+
+```{r}
+mr_trash_df$dataset = "MrT"
+Proftrash_df$dataset = "ProfT"
+
+join_df = full_join(mr_trash_df, Proftrash_df)
 
 
-
-
+```
 
 ## Problem 3
 **First, clean the data in pols-month.csv.**
