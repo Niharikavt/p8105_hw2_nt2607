@@ -162,15 +162,17 @@ head(unemployment_df)
 ```{r}
 join = left_join(pols_month_df, snp_df, by = c("year","month")) %>%
   left_join(unemployment_df, by = c("year", "month"))
+head(join)
 ```
 **Description**
 
-In the `pols_month_df` dataset we have `r nrow(pols_month_df)` rows and `r ncol(pols_month_df)` columns.
+In the `pols_month_df` dataset we have `r nrow(pols_month_df)` rows and `r ncol(pols_month_df)` columns. It contains `r colnames(pols_month_df)` 
 
-In the `snp_df` dataset we have `r nrow(snp_df)` rows and `r ncol(snp_df)` columns.
+In the `snp_df` dataset we have `r nrow(snp_df)` rows and `r ncol(snp_df)` columns. It contains `r colnames(snp_df)`
 
+In the `unemployment_df` dataset we have `r nrow(unemployment_df)` rows and `r ncol(unemployment_df)` columns. It contains `r colnames(unemployment_df)`
 
-
+The resulting dataset has `r nrow(join)` rows, `r ncol(join)` columns and `r dim(join)` dimensions. the range of years is `r min(join$year)` to `r max(join$year)`. Few of the variables are 'year' 'month' 'gov_gop' 'sen_gop' 'rep_gop' 'gov_dem' 'sen_dem' 'rep_dem' 'president' 'close unemployment_rate'
 
 
 
