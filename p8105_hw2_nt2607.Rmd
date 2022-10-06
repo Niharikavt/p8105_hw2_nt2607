@@ -14,8 +14,11 @@ library(readxl)
 ## Problem 1
 This problem focuses on NYC Transit data.
 
-```{r}
-nyctransit_df = read_csv(file = "./data/NYC_Transit_Subway_Entrance_And_Exit_Data.csv")
+```{r Q1}
+nyctransit_df = 
+  read_csv(file = "./data/NYC_Transit_Subway_Entrance_And_Exit_Data.csv",
+col_types = cols(Route8 = "c", Route9 = "c", Route10 = "c", Route11 = "c")) %>% 
+  janitor::clean_names() %>% 
+  select(line, starts_with('station'),starts_with('route'), entry, vending, entrance_type, ada, -station_location) %>% 
+  mutate(entry = ifelse(entry == "YES", TRUE, FALSE))
 ```
-
-
