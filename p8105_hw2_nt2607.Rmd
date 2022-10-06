@@ -119,8 +119,19 @@ Proftrash_df$dataset = "ProfT"
 
 join_df = full_join(mr_trash_df, Proftrash_df)
 
-
 ```
+
+**Description**
+We combined 'Mr. Trash Wheel' and 'Professor Trash Wheel' to make a combined dataset. 
+
+This has `r nrow(join_df)` rows and `r ncol(join_df)` columns.
+
+It includes 'weight_tons' , 'date'.
+
+The total weight of trash collected by Professor Trash Wheel was `r Proftrash_df %>% pull(weight_tons) %>% sum` 
+
+The total number of sports balls collected by Mr. Trash Wheel in 2020 were `r mr_trash_df %>% filter(year == 2020) %>% pull(sports_balls) %>% sum`
+
 
 ## Problem 3
 **First, clean the data in pols-month.csv.**
