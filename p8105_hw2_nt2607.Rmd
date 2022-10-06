@@ -96,7 +96,13 @@ drop_na(dumpster)
 
 
 ## Problem 3
+First, clean the data in pols-month.csv.
 
+```{r}
+pols_month_df = read_csv("./data/fivethirtyeight_datasets/pols-month.csv") %>%
+  janitor::clean_names() %>%
+  separate(mon, into = c("year", "month", "day"), convert = TRUE)
+```
 
 
 
