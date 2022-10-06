@@ -14,4 +14,8 @@ library(readxl)
 ## Problem 1
 This problem focuses on NYC Transit data.
 
+```{r}
+nyctransit_df = read_csv(file = "./data/NYC_Transit_Subway_Entrance_And_Exit_Data.csv")
+```
+
 
