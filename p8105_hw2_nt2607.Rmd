@@ -25,11 +25,41 @@ summary(nyctransit_df)
 ```
 ## Short paragraph about the dataset
 
-This dataset contains the following variablea : `r names(nyctransit_df)`
+This dataset contains the following variables : `r names(nyctransit_df)`
 
 My data cleaning steps involved importing the dataset, cleaning of variable names, selecting particular variables and converting the entry variable from character to logical.
 
 The dimensions of the resulting dataset are `r dim(nyctransit_df)`
+
+Yes, these data are tidy.
+
+## Answer the following questions using this data
+
+*How many distinct stations are there?*
+There are `r nrow(distinct(nyctransit_df, line, station_name))` distinct stations.
+```{r}
+nrow(distinct(nyctransit_df, line, station_name))
+```
+
+*How many stations are ADA compliant?*
+There are `r nrow(filter(nyctransit_df, ada == TRUE))` stations that are ADA compliant.
+
+```{r}
+nrow(filter(nyctransit_df, ada == TRUE))
+```
+
+*What proportion of station entrances / exits without vending allow entrance?*
+```{r}
+without_vending = nrow(filter(nyctransit_df, vending == 'NO'))
+without_vending
+
+entry_no_vending = nrow(filter(nyctransit_df, vending == 'NO', entry == 'TRUE'))
+entry_no_vending
+
+Proportion = entry_no_vending/without_vending
+Proportion
+
+```
 
 
 
