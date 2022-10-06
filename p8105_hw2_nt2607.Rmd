@@ -86,13 +86,7 @@ nyctransit_df %>%
 ## Problem 2
 **Read and clean the Mr. Trash Wheel sheet:**
 
-```{r trash_wheel}
-mr_trash_df = read_excel("./data/Trash Wheel Collection Data.xlsx",
-sheet = "Mr. Trash Wheel",
-range = "A2:N549") %>%
-  janitor::clean_names() %>% 
-  drop_na(dumpster)
-```
+
 
 
 ## Problem 3
@@ -172,7 +166,5 @@ In the `snp_df` dataset we have `r nrow(snp_df)` rows and `r ncol(snp_df)` colum
 In the `unemployment_df` dataset we have `r nrow(unemployment_df)` rows and `r ncol(unemployment_df)` columns. It contains `r colnames(unemployment_df)`
 
 The resulting dataset has `r nrow(join)` rows, `r ncol(join)` columns and `r dim(join)` dimensions. the range of years is `r min(join$year)` to `r max(join$year)`. Few of the variables are 'year' 'month' 'gov_gop' 'sen_gop' 'rep_gop' 'gov_dem' 'sen_dem' 'rep_dem' 'president' 'close unemployment_rate'
-
-
 
 
