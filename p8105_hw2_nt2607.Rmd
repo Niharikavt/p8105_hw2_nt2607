@@ -163,6 +163,12 @@ head(unemployment_df)
 join = left_join(pols_month_df, snp_df, by = c("year","month")) %>%
   left_join(unemployment_df, by = c("year", "month"))
 ```
+**Description**
+
+In the `pols_month_df` dataset we have `r nrow(pols_month_df)` rows and `r ncol(pols_month_df)` columns.
+
+In the `snp_df` dataset we have `r nrow(snp_df)` rows and `r ncol(snp_df)` columns.
+
 
 
 
