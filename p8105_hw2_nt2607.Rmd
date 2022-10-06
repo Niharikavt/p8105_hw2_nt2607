@@ -157,6 +157,13 @@ unemployment_df = read.csv("./data/fivethirtyeight_datasets/unemployment.csv") %
 head(unemployment_df)
 ```
 
+**Merging**
+
+```{r}
+join = left_join(pols_month_df, snp_df, by = c("year","month")) %>%
+  left_join(unemployment_df, by = c("year", "month"))
+```
+
 
 
 
