@@ -96,6 +96,19 @@ mr_trash_df = read_excel("./data/Trash Wheel Collection Data.xlsx", sheet = "Mr.
 
 ```
 
+**Read and clean the Prfessor Trash Wheel Sheet**
+
+```{r}
+mr_trash_df = read_excel("./data/Trash Wheel Collection Data.xlsx", sheet = "Professor Trash Wheel", range = "A2:M96") %>%
+  janitor::clean_names() %>% 
+  drop_na(dumpster)
+
+```
+
+
+
+
+
 ## Problem 3
 **First, clean the data in pols-month.csv.**
 
