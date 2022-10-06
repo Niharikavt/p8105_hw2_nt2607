@@ -83,6 +83,18 @@ nyctransit_df %>%
   distinct
 ```
 
+## Problem 2
+Read and clean the Mr. Trash Wheel sheet:
+
+```{r trash_wheel}
+mr_trash_df = read_excel(file = "./data/Trash Wheel Collection Data.xlsx",
+                         sheet = "Mr. Trash Wheel",
+                         range = "A2:N549") %>%
+  janitor::clean_names() %>%
+  drop_na(dumpster) %>%
+  mutate(sports_balls = round(sports_balls),
+         sports_balls = as.integer(sports_balls))
+```
 
 
 
