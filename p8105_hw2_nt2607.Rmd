@@ -95,9 +95,7 @@ drop_na(dumpster)
 ```
 
 
-
-
-
+## Problem 3
 
 
 
