@@ -87,7 +87,8 @@ nyctransit_df %>%
 **Read and clean the Mr. Trash Wheel sheet:**
 
 ```{r}
-mr_trash_df = read_excel("./data/Trash Wheel Collection Data.xlsx")
+mr_trash_df = read_excel("./data/Trash Wheel Collection Data.xlsx", sheet = "Mr. Trash Wheel", range = "A2:N549")
+colnames(mr_trash_df)
 ```
 
 
