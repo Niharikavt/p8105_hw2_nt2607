@@ -91,7 +91,7 @@ mr_trash_df = read_excel("./data/Trash Wheel Collection Data.xlsx",
 sheet = "Mr. Trash Wheel",
 range = "A2:N549") %>%
   janitor::clean_names() %>% 
-drop_na(dumpster)
+  drop_na(dumpster)
 ```
 
 
@@ -99,10 +99,39 @@ drop_na(dumpster)
 First, clean the data in pols-month.csv.
 
 ```{r}
-pols_month_df = read_csv("./data/fivethirtyeight_datasets/pols-month.csv") %>%
+pols_month_df = read.csv("./data/fivethirtyeight_datasets/pols-month.csv") %>% 
   janitor::clean_names() %>%
-  separate(mon, into = c("year", "month", "day"), convert = TRUE)
+  separate(mon, into = c("year", "month", "day"), convert = TRUE) %>%
+  mutate(.data = ., month = as.integer(month),
+          month = month.name[month],
+          year = as.integer(year),
+         day = as.integer(day),
+         president = case_when(prez_dem =="1" ~ "dem",
+                               prez_gop == "1" ~ "gop"
+          )) %>% 
+  select(-day, -prez_dem, -prez_gop)
+head(pols_month_df)
 ```
+
+Note: The variable prez_gop should only accept 0 or 1 but i can see a few 2's as well which make cause errors.
+
+Cleaning the data in snp.csv
+
+```{r}
+snp_df = read.csv("./data/fivethirtyeight_datasets/snp.csv") %>%
+janitor::clean_names() %>%
+  mutate(date = lubridate::mdy(date)) %>%
+  separate(date, into = c("year","month","day"), convert = TRUE) %>%
+  mutate(month = as.integer(month),
+         month = month.name[month],
+         year = as.integer(year),
+         day = as.integer(day)) %>% 
+  select(-day) %>% 
+  arrange(year, month) %>% 
+  relocate(year, month, close)
+head(snp_df)
+```
+
 
 
 
